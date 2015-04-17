@@ -1,5 +1,4 @@
-﻿using Facebook.Client;
-using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,24 +23,6 @@ namespace aplikacjax
     /// </summary>
     sealed partial class App : Application
     {
-
-
-        protected override void OnActivated(IActivatedEventArgs args)
-        {
-            base.OnActivated(args);
-
-            // You can setup a event handler to be called back when the authentication has finished
-            Session.OnFacebookAuthenticationFinished += OnFacebookAuthenticationFinished;
-
-            var protocolArgs = args as ProtocolActivatedEventArgs;
-            LifecycleHelper.FacebookAuthenticationReceived(protocolArgs);
-        }
-
-        private void OnFacebookAuthenticationFinished(AccessTokenData session)
-        {
-            // here the authentication succeeded callback will be received.
-            // put your login logic here
-        }
 
         // This MobileServiceClient has been configured to communicate with your local
         // test project for debugging purposes.
