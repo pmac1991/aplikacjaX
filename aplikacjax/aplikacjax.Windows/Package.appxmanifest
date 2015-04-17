@@ -20,7 +20,7 @@
       </m2:VisualElements>
       <Extensions>
         <Extension Category="windows.protocol">
-          <Protocol Name="fb" />
+          <Protocol Name="fb452835904891461" />
         </Extension>
       </Extensions>
     </Application>

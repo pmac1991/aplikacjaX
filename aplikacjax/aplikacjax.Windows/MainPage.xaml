@@ -12,15 +12,16 @@
     <Grid Background="White">
 
         <!-- login control -->
-        <facebookControls:LoginButton 
+        <facebookControls:LoginButton
                 x:Name="loginButton" 
                 Grid.Row="2" 
                 HorizontalAlignment="Right" 
+                
                 SessionStateChanged="OnSessionStateChanged" />
 
         <Grid x:Name="ContentPanel" 
                     Grid.Row="1"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
             <TextBlock FontSize="48" 
                                 HorizontalAlignment="Left" 
                                 VerticalAlignment="Center" 
