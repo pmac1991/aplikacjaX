@@ -160,9 +160,9 @@ namespace aplikacjax
             WebAuthenticationBroker.AuthenticateAndContinue(startUri, endUri, null, WebAuthenticationOptions.None);
 #endif
 
-#if WINDOWS_APP
-    WebAuthenticationResult result = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, startUri, endUri);
-    await ParseAuthenticationResult(result);
+#if !WINDOWS_APP
+            WebAuthenticationResult result = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, startUri, endUri);
+            await ParseAuthenticationResult(result);
 #endif
 
         }
