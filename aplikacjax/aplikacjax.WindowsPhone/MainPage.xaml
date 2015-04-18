@@ -30,8 +30,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="242.333" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource BodyTextBlockStyle}" Text="Enter some text below and click Save to insert a new TodoItem item into your database" TextWrapping="Wrap"/>
             <TextBox Grid.Row="1" Grid.Column="0" Name="TextInput" Text="" />

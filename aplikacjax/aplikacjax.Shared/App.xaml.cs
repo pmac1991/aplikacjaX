@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ZUMOAPPNAME;
+
+
 
 namespace aplikacjax
 {
@@ -37,6 +40,10 @@ namespace aplikacjax
         //    "VxqTPyKTnSDZPsOkJdeLVbThAWKNFi71"
         //);
 
+#if WINDOWS_PHONE_APP
+        public static ContinuationManager ContinuationManager { get; private set; } 
+#endif
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -46,8 +53,13 @@ namespace aplikacjax
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
+#if WINDOWS_PHONE_APP
+            ContinuationManager = new ContinuationManager();
+            
+#endif
+
 #if !WINDOWS_PHONE_APP
-                RequestedTheme = ApplicationTheme.Light;    
+                RequestedTheme = ApplicationTheme.Light;
 #endif
         }
 
@@ -120,7 +132,28 @@ namespace aplikacjax
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+#if WINDOWS_PHONE_APP
+            ContinuationManager.MarkAsStale(); 
+#endif
+
             deferral.Complete();
         }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+#if WINDOWS_PHONE_APP
+            if (args.Kind == ActivationKind.WebAuthenticationBrokerContinuation)
+            {
+                var continuationEventArgs = args as IContinuationActivatedEventArgs;
+                if (continuationEventArgs != null)
+                {
+                    ContinuationManager.Continue(continuationEventArgs);
+                    ContinuationManager.MarkAsStale();
+                }
+
+            } 
+#endif
+        }
+
     }
 }
