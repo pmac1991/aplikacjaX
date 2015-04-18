@@ -37,6 +37,7 @@
                         <TextBox Name="TextInput" Margin="5" MinWidth="300"></TextBox>
                         <Button Name="ButtonSave" Click="ButtonSave_Click" IsEnabled="False">Save</Button>
                     </StackPanel>
+                    <Button x:Name="fb_Login" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="421,0,0,0" Click="fb_Login_Click"/>
 
                 </StackPanel>
             </Grid>
